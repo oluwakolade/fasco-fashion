@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+
+@theme {
+    --font-poppins: 'Poppins' , sans-serif;
+    --font-volkhov: 'Volkhov' , sans-serif;
+    --color-blue-50: #5B86E5;
+    --color-grey: #9D9D9D;
+    --color-grey-50: #E0E0E0;
+    --color-grey-300: #838383;
+    --color-grey-500: #484848;
+    --color-grey-700: #767676;
+    --color-bg-one: #DADADA;
+    --color-bg-two:#F8F8F8;
+    --color-bg-three: #D9D9D9;
+
+
+    
+}
+
+
+@layer utilities {
+    .sections{
+        @apply relative h-dvh w-screen overflow-x-hidden md:overflow-y-hidden
+    }
+
+    .section{
+        @apply relative w-[90%] mx-auto overflow-x-clip overflow-y-hidden
+    }
+
+   .filter {
+    @apply font-volkhov text-base text-grey-500
+   }
+   .filter-body{
+    @apply font-poppins text-[10px] md:text-sm text-grey-700
+   }
+   .nav-links-mobile{
+    @apply flex flex-col px-4 py-8 gap-8 bg-gray-300 opacity-95  backdrop-blur h-screen md:hidden w-1/2 transition-transform duration-300 ease-in-out;
+  
+  }
+
+  .checkout-h{
+    @apply font-volkhov text-base text-black mt-4
+  }
+
+  .checkout-p {
+    @apply font-poppins text-gray-500 text-sm
+  }
+
+  .textfield{
+    @apply border border-gray-500 rounded-md w-full
+  }
+
+}
+
+
