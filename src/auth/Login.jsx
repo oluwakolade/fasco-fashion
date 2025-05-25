@@ -39,8 +39,8 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      await handleSignIn(e, setError, email, password);
-      navigate("/home");
+      await handleSignIn(e, setError, email, password);      navigate("/home");
+      
       console.log("Sign-in successful!");
     } catch (err) {
       console.log("Sign-in error:", err);
@@ -180,11 +180,10 @@ const ForgotPassword = ({
 
         <p className="text-black text-sm font-poppins text-center">
           Already have an account?{" "}
-          <span className="text-blue-50 cursor-pointer hover:text-blue-900">
-            <a href="/login" onClick={() => navigate("/login")}>
+          <span onClick={() => navigate("/login")} className="text-blue-50 cursor-pointer hover:text-blue-900">
               {" "}
               Login
-            </a>
+            
           </span>
         </p>
       </form>

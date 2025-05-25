@@ -21,7 +21,7 @@ const sizeFilters = sizes.map((size, i) => (
 ));
 
 const colorFilters = colors.map((color, i) => (
-  <div key={i} className={`w-4 h-4 md:w-6 md:h-6 rounded-full ${color}`}>
+  <div key={i} className={`w-4 h-4 md:w-6 md:h-6 rounded-full `} style={{backgroundColor: color}}>
   </div>
 ));
 

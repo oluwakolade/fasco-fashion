@@ -20,9 +20,11 @@ const ShopProducts = () => {
             {/* buttons */}
           </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-center md:justify-start">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-20  md:gap-8 items-center justify-evenly md:justify-start">
           {/* products */}
           {products.map((product) => (
+            <div key={product.name}>
+
             <ShopProductsCard
             key={product.name}
               img={product.img}
@@ -31,6 +33,8 @@ const ShopProducts = () => {
               colors={product.colors}
               onClick={()=>handleClick(product.name)}
             />
+                        </div>
+
           ))}
         </div>
       </div>
@@ -40,10 +44,10 @@ const ShopProducts = () => {
 
 export default ShopProducts;
 
-const ShopProductsCard = ({ key, img, product, price, colors, isSelected , onClick }) => {
+const ShopProductsCard = ({  img, product, price, colors, isSelected , onClick }) => {
   return (
     <div 
-key={key}
+
     className=" cursor-pointer w-[160px] md:w-[200px] h-[300px] flex flex-col items-start gap-2">
       <img 
       onClick={onClick}
@@ -61,7 +65,7 @@ key={key}
               isSelected ? "border-black" : "border-transparent"
             }`}
           >
-            <div className={`bg-${color} w-4 h-4 rounded-full `}></div>
+            <div className={`w-4 h-4 rounded-full `} style={{backgroundColor: color}}></div>
           </div>
         ))}
       </div>

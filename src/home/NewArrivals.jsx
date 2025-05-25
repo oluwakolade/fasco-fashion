@@ -16,17 +16,19 @@ const NewArrivals = () => {
         <p></p>
       </div>
       {/* butttons */}
-      <div className="  grid grid-cols-3 items-center justify-center object-center md:flex  md:flex-row md:px-20 gap-2 md:gap-12 mb-4 md:mb-6">
+      <div className="  flex flex-wrap items-center justify-center object-center md:flex  md:flex-row md:px-20 gap-2 md:gap-12 mb-4 md:mb-6">
         {Object.keys(products).map((category) => (
+          <div key={category}>
           <NewArrivalsBtn
-            key={category}
             onClick={() => handleCLick(category)}
             label={category
               .replace(/([A-Z])/g, " $1")
               .replace(/^./, (str) => str.toUpperCase())}
             isActive={selectedCategory === category}
           />
+          </div>
         ))}
+        
       </div>
 
       {/* products */}
@@ -49,17 +51,16 @@ const NewArrivals = () => {
 
 export default NewArrivals;
 
-const NewArrivalsBtn = ({ isActive, label, onClick, key }) => {
+const NewArrivalsBtn = ({ isActive, label, onClick, }) => {
   return (
     <div
-      key={key}
       onClick={onClick}
-      className={`py-3 cursor-pointer rounded-lg w-32 md:w-36 text-center shadow-md ${
+      className={`py-3 cursor-pointer rounded-lg w-28 md:w-36 text-center shadow-md ${
         isActive ? "bg-black" : " bg-grey-50 "
       } `}
     >
       <p
-        className={`font-poppins text-[10px] md:text-xs ${
+        className={`font-poppins text-[8px] md:text-xs ${
           isActive ? "text-white" : "text-grey-300"
         }`}
       >
@@ -79,23 +80,23 @@ const NewArrivalsCard = ({
   color,
 }) => {
   return (
-    <div key={key} className=" w-[200px] h-[250px] md:w-[260px] md:h-[300px] bg-white rounded-xl shadow-md p-3 flex flex-col justify-between  transition-all duration-500 ease-in-out ">
+    <div key={key} className=" w-[150px] h-[230px] md:w-[260px] md:h-[300px] bg-white rounded-xl shadow-md p-3 flex flex-col justify-between  transition-all duration-500 ease-in-out ">
         <img
           src={img}
           alt={product}
-          className=" h-36 md:h-48 w-full object-cover rounded-lg mb-4"
+          className=" h-32 md:h-48 w-full object-cover rounded-lg mb-2 md:mb-4"
         />
       <div>
         <div className="flex justify-between items-center mb-1">
-          <h5 className="font-poppins text-xs md:text-sm text-grey-500">{product}</h5>
-          <img src="/img/stars.png" alt="stars" className=" w-12 md:w-16" />
+          <h5 className="font-poppins text-[9px] md:text-sm text-grey-500">{product}</h5>
+          <img src="/img/stars.png" alt="stars" className=" w-9 md:w-16" />
         </div>
-        <p className="font-poppins text-[8px] text-grey-500">{reviews}</p>
-        <div className="flex flex-row items-center justify-between">
-          <p className="font-poppins text-xs md:text-sm font-semibold text-grey-500">
+        <p className="font-poppins text-[7px] text-grey-500 ">{reviews}</p>
+        <div className="flex flex-row items-center justify-between pt-px ">
+          <p className="font-poppins text-[9px] md:text-sm font-semibold text-grey-500">
             {price}
           </p>
-          <p className={`font-poppins text-xs text-${color}-400`}>{status}</p>
+          <p className={`font-poppins text-[9px] md:text-xs text-${color}-400`}>{status}</p>
         </div>
       </div>
     </div>

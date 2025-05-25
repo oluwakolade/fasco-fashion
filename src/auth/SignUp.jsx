@@ -135,11 +135,9 @@ const SignUp = () => {
 
               <p className="text-black text-sm font-poppins text-center">
                 Already have an account?{" "}
-                <span className="text-blue-50 cursor-pointer hover:text-blue-900">
-                  <a href="/login" onClick={() => navigate("/login")}>
+                <span  onClick={() => navigate("/login")} className="text-blue-50 cursor-pointer hover:text-blue-900">
                     {" "}
                     Login
-                  </a>
                 </span>
               </p>
 

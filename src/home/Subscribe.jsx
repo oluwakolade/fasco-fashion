@@ -6,7 +6,7 @@ const Subscribe = () => {
     <section id='subscribe' className="section pt-8 mb-20 ">
       <div className="flex md:flex-row items-center justify-center ">
         <div className="w-[25%]">
-        <img src="/img/sub.png" alt="women outfit" className="h-2/5" />
+        <img src="/img/sub.png" alt="women outfit" className="hidden md:inline h-2/5" />
 
         </div>
 
@@ -31,7 +31,7 @@ const Subscribe = () => {
 
         <div className="w-[25%]">
 
-        <img src="/img/sub2.png" alt="women outfit" className="h-2/5" />
+        <img src="/img/sub2.png" alt="women outfit" className="hidden md:inline h-2/5" />
         </div>
 
       </div>

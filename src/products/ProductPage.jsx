@@ -10,6 +10,7 @@ import Subscribe from "../home/Subscribe";
 import Footer from "../components/Footer";
 import { ButtonOne, ButtonTwo } from "../components/Button";
 import { useCart } from "../cart/CartContext";
+import AppToast from "../components/AppToast";
 
 const ProductPage = () => {
   const { name } = useParams();
@@ -17,12 +18,16 @@ const ProductPage = () => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const product = products.find((p) => p.name === name);
+  const [toast, setToast] = useState(false);
+    const [cartToast, setCartToast] = useState(false);
+
 
   const handleCart = () => {
-      if (!selectedSize || !selectedColor) {
-    alert("Please select both a size and color.");
-    return;
-  }
+    if (!selectedSize || !selectedColor) {
+          setCartToast(true);
+      // alert("Please select both a size and color.");
+      return;
+    }
     const cartItem = {
       id: product.name + selectedSize + selectedColor, // unique
       name: product.name,
@@ -33,21 +38,20 @@ const ProductPage = () => {
     };
 
     addToCart(cartItem);
-        alert("Added to cart!");
-
+    setToast(true);
+    // alert("");
   };
 
   const sizeFilters = sizes.map((size, i) => (
- <div
-  key={i}
-  onClick={() => setSelectedSize(size)}
-  className={`filter-body px-4 py-2 border border-black rounded-md cursor-pointer transition-all duration-200 ${
-    selectedSize === size ? "bg-black text-white" : "hover:bg-gray-200"
-  }`}
->
-  {size}
-</div>
-
+    <div
+      key={i}
+      onClick={() => setSelectedSize(size)}
+      className={`filter-body px-4 py-2 border border-black rounded-md cursor-pointer transition-all duration-200 ${
+        selectedSize === size ? "bg-black text-white" : "hover:bg-gray-200"
+      }`}
+    >
+      {size}
+    </div>
   ));
 
   const colorFilters = product.colors.map((color, i) => (
@@ -61,28 +65,41 @@ const ProductPage = () => {
     //   <div className={`w-4 h-4 rounded-full bg-${color}`}></div>
     // </div>
     <div
-  key={i}
-  onClick={() => setSelectedColor(color)}
-  className={`w-6 h-6 rounded-full border border-black flex items-center justify-center cursor-pointer ${
-    selectedColor === color ? "ring-2 ring-black" : ""
-  }`}
->
-  <div
-    style={{ backgroundColor: color }}
-    className="w-4 h-4 rounded-full"
-  ></div>
-</div>
-
+      key={i}
+      onClick={() => setSelectedColor(color)}
+      className={`w-6 h-6 rounded-full border border-black flex items-center justify-center cursor-pointer ${
+        selectedColor === color ? "ring-2 ring-black" : ""
+      }`}
+    >
+      <div
+        style={{ backgroundColor: color }}
+        className="w-4 h-4 rounded-full"
+      ></div>
+    </div>
   ));
 
   return (
-    <section >
+    <section>
       <NavBar />
 
       <div className="pt-12 section">
+        {toast && (
+          <div className="fixed top-4 right-4 z-20">
+            <AppToast message="Added to cart!" />
+          </div>
+        )}
+           {cartToast && (
+          <div className="fixed top-4 right-4 z-20">
+            <AppToast message="Please select both a size and color" />
+          </div>
+        )}
         <div className="w-full flex flex-col md:flex-row">
           <div className=" w-full md:w-1/2">
-            <img src={product.img} alt={product.name} className="w-screen h-[400px] object-contain" />
+            <img
+              src={product.img}
+              alt={product.name}
+              className="w-screen h-[400px] object-contain"
+            />
           </div>
           <div className="w-full md:w-1/2 flex flex-col">
             <img src="/img/logo.svg" alt="logo" className="w-16 py-8" />
